@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "title": "nexus-studio-145 code budget",
+  "type": "object",
+  "properties": {
+    "scripts_non_blank_non_comment_lines": {
+      "type": "integer",
+      "description": "Non-blank, non-comment lines in scripts/"
+    },
+    "mcp_non_blank_non_comment_lines": {
+      "type": "integer",
+      "description": "Non-blank, non-comment lines in mpc/"
+    },
+    "max_total_lines": {
+      "type": "integer",
+      "description": "Maximum combined lines allowed (scripts + mcp)"
+    },
+    "current_total_lines": {
+      "type": "integer",
+      "description": "Current combined non-blank non-comment line count"
+    }
+  },
+  "required": ["max_total_lines", "current_total_lines"],
+  "additionalProperties": false
+}
