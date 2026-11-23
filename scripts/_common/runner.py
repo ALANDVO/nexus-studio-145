@@ -160,6 +160,9 @@ def build_ffmpeg_cmd(inputs: List[str], output: str, **options) -> List[str]:
         cmd.extend(["-ss", str(options["ss"])])
     if "to" in options:
         cmd.extend(["-to", str(options["to"])])
+    if "vf" in options:
+        # vf value may contain spaces; split carefully
+        cmd.extend(["-vf", options["vf"]])
 
     # Output
     cmd.append(output)
