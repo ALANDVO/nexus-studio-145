@@ -64,11 +64,11 @@ def _fit_filter(fit_mode: str, **options) -> str:
         # Scale: scale=W:H where W/H maintain ratio but cover target
         # Use "iw*min(target_w/iw/ih,target_h/ih):ih*min(target_w/iw/ih,target_h/ih)"
         # then crop to exact target
-        return f"scale=iw*min({target_w}/iw/{target_h}):ih*min({target_w}/iw/{target_h}):0,crop={target_w}:{target_h}:(iw-{target_w})/2:(ih-{target_h})/2"
+        return f"scale=iw*max({target_w}/iw,{target_h}/ih):ih*max({target_w}/iw,{target_h}/ih):0,crop={target_w}:{target_h}:(iw-{target_w})/2:(ih-{target_h})/2"
     else:  # contain
         # Scale to fit: scale keeping aspect, letterbox the rest
         # Scale to fit within target while maintaining aspect
-        return f"scale=iw*min({target_w}/iw/{target_h}):ih*min({target_w}/iw/{target_h}),pad={target_w}:{target_h}:(ow-iw)/2:(oh-ih)/2"
+        return f"scale=iw*min({target_w}/iw,{target_h}/ih):ih*min({target_w}/iw,{target_h}/ih),pad={target_w}:{target_h}:(ow-iw)/2:(oh-ih)/2"
 
 
 # ---------------------------------------------------------------------------
